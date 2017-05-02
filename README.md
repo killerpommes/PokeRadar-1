@@ -21,7 +21,7 @@
 
 ### Minecraft 1.10.2  
 &nbsp;&nbsp; *Pixelmon 5.0.3 / 5.0.4*  
-&nbsp;&nbsp;&nbsp;&nbsp; - [PokeRadar 3.6.2](https://mega.nz/#!trZxBLTY!hz4AVwGn_2L7z2XqjlslPBzj6YkAxCK1cAuivNEbghM)  
+&nbsp;&nbsp;&nbsp;&nbsp; - [PokeRadar 3.6.2](http://goo.gl/7q26BZ)  
   
 
 ## Screenshots
