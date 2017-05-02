@@ -1,7 +1,6 @@
 ***Forge Required: https://files.minecraftforge.net/***  
 
 # PokeRadar for Minecraft Pixelmon
-- PokeRadar is once again UNDETECTABLE. Party hard friends!
 - New Boss colors with nameplates and waypoints
 - Search multiple pokemon by separating with commas eg: pikachu, magikarp, mew
 - NPC detection
