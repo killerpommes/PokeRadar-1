@@ -1,4 +1,4 @@
-**Forge Required: https://files.minecraftforge.net/**  
+***Forge Required: https://files.minecraftforge.net/***  
 
 # PokeRadar for Minecraft Pixelmon
 - PokeRadar is once again UNDETECTABLE. Party hard friends!
