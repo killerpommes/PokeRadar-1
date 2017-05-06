@@ -10,9 +10,10 @@
 - Filter by Nature
 - Filter by Effort Value (EV). Search by specifically HP, Attack, Defense, Sp.Attk, Sp.Def, or Speed. A pokemon will show up if it has only that EV.
 - PokeRadar automatically checks for updates
-- Right click a Pokemon to view basic stats on it
-- Clicking the "Stats" option on a pokemon will show you an expanded stats print out
-- You can choose between colored dots or textures on the map! Check under Map Settings > Pokeradar to change.
+- Right click a Pokemon to view *basic* stats on it
+- Clicking the "Stats" option on a pokemon will show you an *expanded* stats print out
+- Choose between colored dots or pokemon textures on your map
+- Add colors to your pokemon's name and increase the limit on name size
 - More optimization
   
 
@@ -20,7 +21,7 @@
 
 ### Minecraft 1.10.2  
 &nbsp;&nbsp; *Pixelmon 5.0.3 / 5.0.4*  
-&nbsp;&nbsp;&nbsp;&nbsp; - [PokeRadar 3.6.2](http://goo.gl/7q26BZ)  
+&nbsp;&nbsp;&nbsp;&nbsp; - [PokeRadar 3.7.0](https://goo.gl/sMlW0f)  
   
 
 ## Screenshots
