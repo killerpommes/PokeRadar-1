@@ -11,7 +11,7 @@
 - Filter by Effort Value (EV). Search by specifically HP, Attack, Defense, Sp.Attk, Sp.Def, or Speed. A pokemon will show up if it has only that EV.
 - PokeRadar automatically checks for updates
 - Right click a Pokemon to view *basic* stats on it
-- Clicking the "Stats" tab will show two new tabs "IV" and "EV". These tabs show hidden information about your Pokemon.
+- Clicking the "Stats" tab will show two new tabs: **IV** and **EV**. These new tabs reveal hidden information about your Pokemon.
 - Choose between colored dots or pokemon textures on your map
 - Add colors to your pokemon's name and increase the limit on name size
 - More optimization
