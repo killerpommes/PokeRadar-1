@@ -1,0 +1,16 @@
+[
+{
+  "modid": "pokeradar",
+  "name": "PokeRadar",
+  "description": "Detect any pokemon in your area",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["CallMeTheDr"],
+  "credits": "ChunkBin",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
