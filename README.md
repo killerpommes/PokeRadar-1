@@ -1,4 +1,4 @@
-# **NOTICE:** Pixelmon development has been discontinued. As such, I will no longer be developing PokeRadar. I have uploaded the source code should you wish to modify it any further. So long, and thanks for all the fish!
+## NOTICE: Pixelmon development has been discontinued. As such, I will no longer be developing PokeRadar. I have uploaded the source code should you wish to modify it any further. So long, and thanks for all the fish!
 
 ***Forge Required: https://files.minecraftforge.net/***  
 
