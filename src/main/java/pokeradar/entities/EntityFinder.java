@@ -33,10 +33,10 @@ public class EntityFinder
     private static List<String> legendaryList = Reference.LEGENDARIES;
     public static void getAndDraw(MapRenderer mp, Minecraft mc)
     {
-        if ((mc.theWorld != null) && (mc.theWorld.getLoadedEntityList().size() > 1))
+        if ((mc.world != null) && (mc.world.getLoadedEntityList().size() > 1))
         {
-            List<Entity> entityList = mc.theWorld.loadedEntityList;
-            List<TileEntity> tileList = mc.theWorld.loadedTileEntityList;
+            List<Entity> entityList = mc.world.loadedEntityList;
+            List<TileEntity> tileList = mc.world.loadedTileEntityList;
             Iterator entityIt = entityList.iterator();
             Iterator tileIt = tileList.iterator();
 
@@ -268,7 +268,7 @@ public class EntityFinder
                     if(tile.getVisibility() == EnumPokechestVisibility.Hidden){
                         desc = "Hidden";
                     }
-                    pkMarkers.add(new PKMarker(EntityType.LOOT, tile, "PokeLoot", desc, EntityType.LOOT.getRadius(), mp, mc.theWorld.provider.getDimension()));
+                    pkMarkers.add(new PKMarker(EntityType.LOOT, tile, "PokeLoot", desc, EntityType.LOOT.getRadius(), mp, mc.world.provider.getDimension()));
                     //lootMarker.desc = " (" + (int) lootMarker.getDistanceToMarker(mc.thePlayer) + "m)" ;
                     //pkMarkers.add(lootMarker);
                 }
@@ -278,7 +278,7 @@ public class EntityFinder
                     String type = "";
                     if (blockShrine != null && blockShrine.rockType != null)
                         type = blockShrine.rockType.toString();
-                    pkMarkers.add(new PKMarker(EntityType.SHRINE, tile, "PokeShrine", type, EntityType.SHRINE.getRadius(), mp, mc.theWorld.provider.getDimension()));
+                    pkMarkers.add(new PKMarker(EntityType.SHRINE, tile, "PokeShrine", type, EntityType.SHRINE.getRadius(), mp, mc.world.provider.getDimension()));
                     //shrineMarker.desc = " (" + (int) shrineMarker.getDistanceToMarker(mc.thePlayer) + "m)" ;
                     //pkMarkers.add(shrineMarker);
                 }

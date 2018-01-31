@@ -82,10 +82,10 @@ public class Utils
 	// send an ingame chat message and console log
 	public static void printBoth(String msg)
 	{
-		EntityPlayerSP thePlayer = Minecraft.getMinecraft().thePlayer;
-		if (thePlayer != null)
+		EntityPlayerSP player = Minecraft.getMinecraft().player;
+		if (player != null)
 		{
-			thePlayer.addChatMessage(new TextComponentString(msg));
+			player.sendStatusMessage(new TextComponentString(msg), false);
 		}
 		Logging.log("%s", msg);
 	}
@@ -148,8 +148,8 @@ public class Utils
 
 	public static int distToChunkSq(int x, int z, Chunk chunk)
 	{
-		int dx = ((chunk.xPosition << 4) + 8) - x;
-		int dz = ((chunk.zPosition << 4) + 8) - z;
+		int dx = ((chunk.x << 4) + 8) - x;
+		int dz = ((chunk.z << 4) + 8) - z;
 		return (dx * dx) + (dz * dz);
 	}
 
@@ -245,7 +245,7 @@ public class Utils
 
 	public static int getMaxWidth(String[] arr, String[] arr2)
 	{
-		FontRenderer fontRendererObj = Minecraft.getMinecraft().fontRendererObj;
+		FontRenderer fontRendererObj = Minecraft.getMinecraft().fontRenderer;
 		int Width = 1;
 		for (int i = 0; i < arr.length; i++)
 		{

@@ -39,7 +39,7 @@ public class MwGuiTextDialog extends GuiScreen
 			this.text = this.textField.getText();
 		}
 		int w = (this.width * textDialogWidthPercent) / 100;
-		this.textField = new GuiTextField(0, this.fontRendererObj, ((this.width - w) / 2) + 5, textDialogY, w - 10, 12);
+		this.textField = new GuiTextField(0, this.fontRenderer, ((this.width - w) / 2) + 5, textDialogY, w - 10, 12);
 		this.textField.setMaxStringLength(32);
 		this.textField.setFocused(true);
 		this.textField.setCanLoseFocus(false);
@@ -123,11 +123,11 @@ public class MwGuiTextDialog extends GuiScreen
 
 		int w = (this.width * textDialogWidthPercent) / 100;
 		drawRect((this.width - w) / 2, textDialogTitleY - 4, ((this.width - w) / 2) + w, textDialogErrorY + 14, 0x80000000);
-		this.drawCenteredString(this.fontRendererObj, this.title, this.width / 2, textDialogTitleY, 0xffffff);
+		this.drawCenteredString(this.fontRenderer, this.title, this.width / 2, textDialogTitleY, 0xffffff);
 		this.textField.drawTextBox();
 		if (this.showError)
 		{
-			this.drawCenteredString(this.fontRendererObj, this.error, this.width / 2, textDialogErrorY, 0xffffff);
+			this.drawCenteredString(this.fontRenderer, this.error, this.width / 2, textDialogErrorY, 0xffffff);
 		}
 
 		super.drawScreen(mouseX, mouseY, f);

@@ -96,7 +96,7 @@ public class Marker
 		double d0 = this.x - entityIn.posX;
 		double d1 = this.y - entityIn.posY;
 		double d2 = this.z - entityIn.posZ;
-		return MathHelper.sqrt_double((d0 * d0) + (d1 * d1) + (d2 * d2));
+		return MathHelper.sqrt((d0 * d0) + (d1 * d1) + (d2 * d2));
 	}
 
 	public float getRed()

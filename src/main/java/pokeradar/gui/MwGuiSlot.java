@@ -8,7 +8,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -200,7 +200,7 @@ public abstract class MwGuiSlot
 			i = 0;
 		}
 
-		this.amountScrolled = MathHelper.clamp_float(this.amountScrolled, 0.0F, i);
+		this.amountScrolled = MathHelper.clamp(this.amountScrolled, 0.0F, i);
 	}
 
 	public int func_148135_f()
@@ -275,7 +275,7 @@ public abstract class MwGuiSlot
 			GlStateManager.disableLighting();
 			GlStateManager.disableFog();
 			Tessellator tessellator = Tessellator.getInstance();
-			VertexBuffer vertexbuffer = tessellator.getBuffer();
+			BufferBuilder vertexbuffer = tessellator.getBuffer();
 			this.drawContainerBackground(tessellator);
 			int i1 = this.left + ((this.width / 2) - (this.getListWidth() / 2));
 			int j1 = this.top - (int) this.amountScrolled;
@@ -299,7 +299,7 @@ public abstract class MwGuiSlot
 			if (k1 > 0)
 			{
 				int l1 = ((this.bottom - this.top) * (this.bottom - this.top)) / this.getContentHeight();
-				l1 = MathHelper.clamp_int(l1, 32, this.bottom - this.top - 8);
+				l1 = MathHelper.clamp(l1, 32, this.bottom - this.top - 8);
 				int i2 = (((int) this.amountScrolled * (this.bottom - this.top - l1)) / k1) + this.top;
 
 				if (i2 < this.top)
@@ -379,7 +379,7 @@ public abstract class MwGuiSlot
 							}
 
 							int k1 = (int) ((float) ((this.bottom - this.top) * (this.bottom - this.top)) / (float) this.getContentHeight());
-							k1 = MathHelper.clamp_int(k1, 32, this.bottom - this.top - 8);
+							k1 = MathHelper.clamp(k1, 32, this.bottom - this.top - 8);
 							this.scrollMultiplier /= (float) (this.bottom - this.top - k1) / (float) j1;
 						}
 						else
@@ -481,7 +481,7 @@ public abstract class MwGuiSlot
 	{
 		int i1 = this.getSize();
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 
 		int yTotal = y + this.headerPadding;
 

@@ -36,7 +36,7 @@ public class RadarGui extends GuiScreen {
 
     public void initGui() {
         super.initGui();
-        this.search = new GuiTextField(0, fontRendererObj, this.width / 2 - searchWidth / 2 , 40, searchWidth, 18);
+        this.search = new GuiTextField(0, fontRenderer, this.width / 2 - searchWidth / 2 , 40, searchWidth, 18);
         this.search.setMaxStringLength(255);
         this.search.setText(this.searchString);
         this.search.setFocused(true);
@@ -57,7 +57,7 @@ public class RadarGui extends GuiScreen {
                 new GuiButton(100, this.width / 2 - searchWidth / 2, 90,
                         15, 20, "<"));
         this.buttonList.add(
-                new GuiButton(101, this.width / 2 - searchWidth / 2 + 20 + fontRendererObj.getStringWidth(evLabel)*2, 90,
+                new GuiButton(101, this.width / 2 - searchWidth / 2 + 20 + fontRenderer.getStringWidth(evLabel)*2, 90,
                         15, 20, ">"));
 
         // Nature Filter PREV and NEXT
@@ -65,19 +65,19 @@ public class RadarGui extends GuiScreen {
                 new GuiButton(200, this.width / 2 - searchWidth / 2, 130,
                         15, 20, "<"));
         this.buttonList.add(
-                new GuiButton(201, this.width / 2 - searchWidth / 2 + 20 + fontRendererObj.getStringWidth(natureLabel)*2, 130,
+                new GuiButton(201, this.width / 2 - searchWidth / 2 + 20 + fontRenderer.getStringWidth(natureLabel)*2, 130,
                         15, 20, ">"));
 
         // Mod Settings
         this.buttonList.add(
-                this.options = new GuiButton(1, this.width / 2 - fontRendererObj.getStringWidth(optionsStr.toString()) / 2, 176,
-                        fontRendererObj.getStringWidth(optionsStr.toString()) + 15, 20, optionsStr));
+                this.options = new GuiButton(1, this.width / 2 - fontRenderer.getStringWidth(optionsStr.toString()) / 2, 176,
+                        fontRenderer.getStringWidth(optionsStr.toString()) + 15, 20, optionsStr));
 
         // Version check
         if (!VersionCheck.isLatestVersion())
             this.buttonList.add(
                     this.updateButton = new GuiButton(2, 2, 2,
-                            fontRendererObj.getStringWidth(updateAvail + VersionCheck.getLatestVersion()) + 15,
+                            fontRenderer.getStringWidth(updateAvail + VersionCheck.getLatestVersion()) + 15,
                             20,updateAvail + VersionCheck.getLatestVersion()));
     }
 
@@ -97,21 +97,21 @@ public class RadarGui extends GuiScreen {
     {
         this.drawDefaultBackground();
 
-        this.drawCenteredString(this.fontRendererObj, searchLabel, this.width / 2, 30, Color.WHITE.getRGB());
+        this.drawCenteredString(this.fontRenderer, searchLabel, this.width / 2, 30, Color.WHITE.getRGB());
 
         GlStateManager.scale(2,2,1);
-        this.drawString(this.fontRendererObj, evLabel, this.width / 4 - searchWidth / 4 + 9, 47, Color.WHITE.getRGB());
-        this.drawString(this.fontRendererObj, natureLabel, this.width / 4 - searchWidth / 4 + 9 , 67, Color.WHITE.getRGB());
+        this.drawString(this.fontRenderer, evLabel, this.width / 4 - searchWidth / 4 + 9, 47, Color.WHITE.getRGB());
+        this.drawString(this.fontRenderer, natureLabel, this.width / 4 - searchWidth / 4 + 9 , 67, Color.WHITE.getRGB());
 
         GlStateManager.scale(0.5,0.5,1);
-        this.drawString(this.fontRendererObj, getEVTypeLabel(), this.width / 2 - searchWidth / 2, 113, Color.ORANGE.getRGB());
-        this.drawString(this.fontRendererObj, getNatureLabel(), this.width / 2 - searchWidth / 2, 153, Color.ORANGE.getRGB());
+        this.drawString(this.fontRenderer, getEVTypeLabel(), this.width / 2 - searchWidth / 2, 113, Color.ORANGE.getRGB());
+        this.drawString(this.fontRenderer, getNatureLabel(), this.width / 2 - searchWidth / 2, 153, Color.ORANGE.getRGB());
 
         // Version check
         if (VersionCheck.isLatestVersion())
-            this.drawString(this.fontRendererObj, "PokeRadar is up to date! [" + VersionCheck.getLatestVersion() + "]", 2, 2, Color.GRAY.getRGB());
+            this.drawString(this.fontRenderer, "PokeRadar is up to date! [" + VersionCheck.getLatestVersion() + "]", 2, 2, Color.GRAY.getRGB());
 
-        //this.drawCenteredString(this.fontRendererObj, evLabel, this.width / 2, 90, 0xffffff);
+        //this.drawCenteredString(this.fontRenderer, evLabel, this.width / 2, 90, 0xffffff);
         search.drawTextBox();
         super.drawScreen(mouseX, mouseY, f);
 

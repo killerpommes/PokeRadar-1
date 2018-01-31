@@ -35,7 +35,7 @@ public class MwGuiMarkerListOverlay extends MwGuiSlot
 	protected int getSlotHeight(int index)
 	{
 		String str = Utils.stringArrayToString(this.getLabelString(index));
-		int height = this.mc.fontRendererObj.splitStringWidth(str, MwGuiMarkerListOverlay.listWidth - 6);
+		int height = this.mc.fontRenderer.getWordWrappedHeight(str, MwGuiMarkerListOverlay.listWidth - 6);
 
 		height += this.spacingY * 2;
 

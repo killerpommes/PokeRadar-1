@@ -82,47 +82,47 @@ public class ModGuiConfigHUD extends GuiConfig
 	{
 		super.initGui();
 		int topLeftWidth = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.topleft")) + 20,
 				100);
 
 		int topRightWidth = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.topright")) + 20,
 				100);
 
 		int bottomLeftWidth = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.botleft")) + 20,
 				100);
 
 		int bottomRightWidth = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.botright")) + 20,
 				100);
 
 		int CenterTopWidth = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.centertop")) + 20,
 				100);
 
 		int CenterBottomWidth = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.centerbottom")) + 20,
 				100);
 
 		int CenterWidth = Math.max(
-				mc.fontRendererObj.getStringWidth(I18n.format("mw.config.map.ctgy.position.center"))
+				mc.fontRenderer.getStringWidth(I18n.format("mw.config.map.ctgy.position.center"))
 						+ 20,
 				100);
 
 		int CenterLeft = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.centerleft")) + 20,
 				100);
 
 		int CenterRight = Math.max(
-				mc.fontRendererObj.getStringWidth(
+				mc.fontRenderer.getStringWidth(
 						I18n.format("mw.config.map.ctgy.position.centerright")) + 20,
 				100);
 
@@ -224,11 +224,11 @@ public class ModGuiConfigHUD extends GuiConfig
 		double bottomOffset = 0;
 		if (!this.mapMode.getConfig().biomeMode.equals(MapModeConfig.coordsModeStringArray[0]))
 		{
-			bottomOffset = bottomOffset + mc.fontRendererObj.FONT_HEIGHT + 3;
+			bottomOffset = bottomOffset + mc.fontRenderer.FONT_HEIGHT + 3;
 		}
 		if (!this.mapMode.getConfig().biomeMode.equals(MapModeConfig.coordsModeStringArray[0]))
 		{
-			bottomOffset = bottomOffset + mc.fontRendererObj.FONT_HEIGHT + 3;
+			bottomOffset = bottomOffset + mc.fontRenderer.FONT_HEIGHT + 3;
 		}
 		bottomOffset = (bottomOffset / this.height) * 100;
 

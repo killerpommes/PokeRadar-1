@@ -6,6 +6,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.renderer.BufferBuilder;
 import org.lwjgl.opengl.GL11;
 
 import pokeradar.config.Config;
@@ -22,7 +23,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -407,7 +407,7 @@ public class MarkerManager
 		}
 
 		for (PKMarker m : EntityFinder.pkMarkers) {
-			if (m.dimension == Minecraft.getMinecraft().thePlayer.dimension) {
+			if (m.dimension == Minecraft.getMinecraft().player.dimension) {
 				boolean draw = false;
 				switch (m.type) {
 					case BOSS_UNCOMMON:
@@ -452,7 +452,7 @@ public class MarkerManager
 
 		for (Marker m : this.visibleMarkerList)
 		{
-			if (m.dimension == Minecraft.getMinecraft().thePlayer.dimension)
+			if (m.dimension == Minecraft.getMinecraft().player.dimension)
 			{
 				if (pokeradarConfig.drawMarkersInWorld)
 				{
@@ -469,9 +469,9 @@ public class MarkerManager
 	public void drawBeam(Marker m, float partialTicks)
 	{
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 
-		float f2 = Minecraft.getMinecraft().theWorld.getTotalWorldTime() + partialTicks;
+		float f2 = Minecraft.getMinecraft().world.getTotalWorldTime() + partialTicks;
 		double d3 = f2 * 0.025D * -1.5D;
 		// the height of the beam always to the max height
 		double d17 = 255.0D;
@@ -565,9 +565,9 @@ public class MarkerManager
 	public void drawBeam(PKMarker m, float partialTicks)
 	{
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 
-		float f2 = Minecraft.getMinecraft().theWorld.getTotalWorldTime() + partialTicks;
+		float f2 = Minecraft.getMinecraft().world.getTotalWorldTime() + partialTicks;
 		double d3 = f2 * 0.025D * -1.5D;
 		// the height of the beam always to the max height
 		double d17 = 255.0D;
@@ -664,7 +664,7 @@ public class MarkerManager
 		float growFactor = 0.17F;
 		Minecraft mc = Minecraft.getMinecraft();
 		RenderManager renderManager = mc.getRenderManager();
-		FontRenderer fontrenderer = mc.fontRendererObj;
+		FontRenderer fontrenderer = mc.fontRenderer;
 
 		double x = (0.5D + m.x) - TileEntityRendererDispatcher.staticPlayerX;
 		double y = (0.5D + m.y) - TileEntityRendererDispatcher.staticPlayerY;
@@ -701,7 +701,7 @@ public class MarkerManager
 		GL11.glEnable(GL_DEPTH_CLAMP);
 
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 
 		GlStateManager.disableTexture2D();
 
@@ -762,7 +762,7 @@ public class MarkerManager
 		float growFactor = 0.17F;
 		Minecraft mc = Minecraft.getMinecraft();
 		RenderManager renderManager = mc.getRenderManager();
-		FontRenderer fontrenderer = mc.fontRendererObj;
+		FontRenderer fontrenderer = mc.fontRenderer;
 
 		double x = (0.5D + m.x) - TileEntityRendererDispatcher.staticPlayerX;
 		double y = (0.5D + m.y) - TileEntityRendererDispatcher.staticPlayerY;
@@ -802,7 +802,7 @@ public class MarkerManager
 		GL11.glEnable(GL_DEPTH_CLAMP);
 
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 
 		GlStateManager.disableTexture2D();
 
@@ -883,7 +883,7 @@ public class MarkerManager
 		float growFactor = 0.17F;
 		Minecraft mc = Minecraft.getMinecraft();
 		RenderManager renderManager = mc.getRenderManager();
-		FontRenderer fontrenderer = mc.fontRendererObj;
+		FontRenderer fontrenderer = mc.fontRenderer;
 
 		double x = (0.5D + m.x) - TileEntityRendererDispatcher.staticPlayerX;
 		double y = (0.5D + m.y) - TileEntityRendererDispatcher.staticPlayerY;
@@ -921,7 +921,7 @@ public class MarkerManager
 		GL11.glEnable(GL_DEPTH_CLAMP);
 
 		Tessellator tessellator = Tessellator.getInstance();
-		VertexBuffer vertexbuffer = tessellator.getBuffer();
+		BufferBuilder vertexbuffer = tessellator.getBuffer();
 
 		GlStateManager.disableTexture2D();
 

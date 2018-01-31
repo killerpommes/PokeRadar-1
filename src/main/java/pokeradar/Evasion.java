@@ -107,11 +107,7 @@ public class Evasion {
             brdfield.set(FMLCommonHandler.instance(), ImmutableList.copyOf(brdCopy));
             brdfield.setAccessible(false);
         }
-        catch(NoSuchFieldException e)
-        {
-            e.printStackTrace();
-        }
-        catch(Exception e)
+        catch(NoSuchFieldException | IllegalAccessException e)
         {
             e.printStackTrace();
         }

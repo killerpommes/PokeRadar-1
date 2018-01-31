@@ -285,10 +285,10 @@ public class MwGui extends GuiScreen
 	public int getHeightAtBlockPos(int bX, int bZ)
 	{
 		int bY = 0;
-		int worldDimension = this.mw.mc.theWorld.provider.getDimensionType().getId();
+		int worldDimension = this.mw.mc.world.provider.getDimensionType().getId();
 		if ((worldDimension == this.mapView.getDimension()) && (worldDimension != -1))
 		{
-			bY = this.mw.mc.theWorld.getHeight(new BlockPos(bX, 0, bZ)).getY();
+			bY = this.mw.mc.world.getHeight(new BlockPos(bX, 0, bZ)).getY();
 		}
 		return bY;
 	}
@@ -732,15 +732,15 @@ public class MwGui extends GuiScreen
 			builder.append(I18n.format("mw.gui.mwgui.status.cursorNoY", bX, bZ));
 		}
 
-		if (this.mc.theWorld != null)
+		if (this.mc.world != null)
 		{
-			if (!this.mc.theWorld.getChunkFromBlockCoords(new BlockPos(bX, 0, bZ)).isEmpty())
+			if (!this.mc.world.getChunkFromBlockCoords(new BlockPos(bX, 0, bZ)).isEmpty())
 			{
 				builder.append(", ");
 				builder.append(
 						I18n.format(
 								"mw.gui.mwgui.status.biome",
-								this.mc.theWorld
+								this.mc.world
 										.getBiomeForCoordsBody(new BlockPos(bX, 0, bZ))
 										.getBiomeName()));
 			}
@@ -752,7 +752,7 @@ public class MwGui extends GuiScreen
 			builder.append(provider.getStatusString(this.mapView.getDimension(), bX, bY, bZ));
 		}
 		String s = builder.toString();
-		int x = (this.width / 2) - 10 - (this.fontRendererObj.getStringWidth(s) / 2);
+		int x = (this.width / 2) - 10 - (this.fontRenderer.getStringWidth(s) / 2);
 
 		this.statusLabel.setCoords(x, this.height - 21);
 		this.statusLabel.setText(new String[]
@@ -870,7 +870,7 @@ public class MwGui extends GuiScreen
 		{
 			this.markerLabel.setText(new String[]
 			{
-					this.mc.thePlayer.getDisplayNameString(),
+					this.mc.player.getDisplayNameString(),
 					String.format(
 							"(%d, %d, %d)",
 							this.mw.playerXInt,

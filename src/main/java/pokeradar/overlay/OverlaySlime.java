@@ -27,7 +27,7 @@ public class OverlaySlime implements IMwDataProvider
 
 	public static void askSeed()
 	{
-		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+		EntityPlayerSP player = Minecraft.getMinecraft().player;
 		if (player == null)
 		{
 			return;
@@ -98,19 +98,19 @@ public class OverlaySlime implements IMwDataProvider
 		// in this case
 		// and the zoom lvl, to provide higher level informations
 
-		if (Minecraft.getMinecraft().thePlayer.getEntityWorld().provider
+		if (Minecraft.getMinecraft().player.getEntityWorld().provider
 				.getDimensionType()
 				.getId() != dim)
 		{
 			return new ArrayList<IMwChunkOverlay>();
 		}
 
-		int minChunkX = (MathHelper.ceiling_double_int(minX) >> 4) - 1;
-		int minChunkZ = (MathHelper.ceiling_double_int(minZ) >> 4) - 1;
-		int maxChunkX = (MathHelper.ceiling_double_int(maxX) >> 4) + 1;
-		int maxChunkZ = (MathHelper.ceiling_double_int(maxZ) >> 4) + 1;
-		int cX = (MathHelper.ceiling_double_int(centerX) >> 4) + 1;
-		int cZ = (MathHelper.ceiling_double_int(centerZ) >> 4) + 1;
+		int minChunkX = (MathHelper.ceil(minX) >> 4) - 1;
+		int minChunkZ = (MathHelper.ceil(minZ) >> 4) - 1;
+		int maxChunkX = (MathHelper.ceil(maxX) >> 4) + 1;
+		int maxChunkZ = (MathHelper.ceil(maxZ) >> 4) + 1;
+		int cX = (MathHelper.ceil(centerX) >> 4) + 1;
+		int cZ = (MathHelper.ceil(centerZ) >> 4) + 1;
 
 		int limitMinX = Math.max(minChunkX, cX - 100);
 		int limitMaxX = Math.min(maxChunkX, cX + 100);

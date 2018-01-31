@@ -138,16 +138,16 @@ public class MwChunk implements IChunk
 					NibbleArray nibblearray1 = nbttagcompound.hasKey("Add", 7) ? new NibbleArray(
 							nbttagcompound.getByteArray("Add")) : null;
 					extendedblockstorage.getData().setDataFromNBT(abyte, nibblearray, nibblearray1);
-					extendedblockstorage.setBlocklightArray(
+					extendedblockstorage.setBlockLight(
 							new NibbleArray(nbttagcompound.getByteArray("BlockLight")));
 
 					if (flag)
 					{
-						extendedblockstorage.setSkylightArray(
+						extendedblockstorage.setBlockLight(
 								new NibbleArray(nbttagcompound.getByteArray("SkyLight")));
 					}
 
-					extendedblockstorage.removeInvalidBlocks();
+//					extendedblockstorage.removeInvalidBlocks();
 					data[y] = extendedblockstorage;
 				}
 
@@ -155,7 +155,7 @@ public class MwChunk implements IChunk
 
 				NBTTagList nbttaglist2 = level.getTagList("TileEntities", 10);
 
-				if (nbttaglist2 != null)
+				if (!nbttaglist2.hasNoTags())
 				{
 					for (int i1 = 0; i1 < nbttaglist2.tagCount(); ++i1)
 					{
@@ -187,11 +187,6 @@ public class MwChunk implements IChunk
 			// this.log("MwChunk.read: chunk (%d, %d) empty=%b", this.x, this.z,
 			// empty);
 		}
-		else
-		{
-			// this.log("MwChunk.read: chunk (%d, %d) input stream is null",
-			// this.x, this.z);
-		}
 
 		return new MwChunk(x, z, dimension, data, biomeArray, TileEntityMap);
 	}
@@ -210,7 +205,7 @@ public class MwChunk implements IChunk
 
 		if (k == 255)
 		{
-			Biome biome = Minecraft.getMinecraft().theWorld.getBiomeProvider().getBiome(
+			Biome biome = Minecraft.getMinecraft().world.getBiomeProvider().getBiome(
 					new BlockPos(k, k, k),
 					Biomes.PLAINS);
 			k = Biome.getIdForBiome(biome);
@@ -349,21 +344,21 @@ public class MwChunk implements IChunk
 
 				nbttagcompound.setByteArray(
 						"BlockLight",
-						extendedblockstorage.getBlocklightArray().getData());
+						extendedblockstorage.getBlockLight().getData());
 
-				if (extendedblockstorage.getSkylightArray() != null && extendedblockstorage
-						.getSkylightArray()
-						.getData() != null)
+				if (extendedblockstorage.getSkyLight().getData().length != 0 && extendedblockstorage
+						.getSkyLight()
+						.getData().length != 0)
 				{
 					nbttagcompound.setByteArray(
 							"SkyLight",
-							extendedblockstorage.getSkylightArray().getData());
+							extendedblockstorage.getSkyLight().getData());
 				}
 				else
 				{
 					nbttagcompound.setByteArray(
 							"SkyLight",
-							new byte[extendedblockstorage.getBlocklightArray().getData().length]);
+							new byte[extendedblockstorage.getBlockLight().getData().length]);
 				}
 
 				nbttaglist.appendTag(nbttagcompound);

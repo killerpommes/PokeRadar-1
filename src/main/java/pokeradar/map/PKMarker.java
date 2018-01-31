@@ -83,7 +83,7 @@ public class PKMarker {
         this.coordX = (int)x;
         this.coordY = (int)y;
         this.coordZ = (int)z;
-        double scale = mp.getMapView().getDimensionScaling(Minecraft.getMinecraft().theWorld.provider.getDimensionType().getId());
+        double scale = mp.getMapView().getDimensionScaling(Minecraft.getMinecraft().world.provider.getDimensionType().getId());
         Point2D.Double p = mp.getMapMode().getClampedScreenXY(mp.getMapView(), x * scale, z * scale);
         this.screenPos.setLocation(p.x + mp.getMapMode().getXTranslation(), p.y + mp.getMapMode().getYTranslation());
     }
@@ -103,7 +103,7 @@ public class PKMarker {
         this.coordX = (int)x;
         this.coordY = (int)y;
         this.coordZ = (int)z;
-        double scale = mp.getMapView().getDimensionScaling(Minecraft.getMinecraft().theWorld.provider.getDimensionType().getId());
+        double scale = mp.getMapView().getDimensionScaling(Minecraft.getMinecraft().world.provider.getDimensionType().getId());
         Point2D.Double p = mp.getMapMode().getClampedScreenXY(mp.getMapView(), x * scale, z * scale);
         this.screenPos.setLocation(p.x + mp.getMapMode().getXTranslation(), p.y + mp.getMapMode().getYTranslation());
     }
@@ -160,6 +160,6 @@ public class PKMarker {
         double d0 = this.x - entityIn.posX;
         double d1 = this.y - entityIn.posY;
         double d2 = this.z - entityIn.posZ;
-        return MathHelper.sqrt_double((d0 * d0) + (d1 * d1) + (d2 * d2));
+        return MathHelper.sqrt((d0 * d0) + (d1 * d1) + (d2 * d2));
     }
 }

@@ -57,8 +57,8 @@ public class BlockColourGen
 		{
 			if (biome != null)
 			{
-				double temp = MathHelper.clamp_float(biome.getTemperature(), 0.0F, 1.0F);
-				double rain = MathHelper.clamp_float(biome.getRainfall(), 0.0F, 1.0F);
+				double temp = MathHelper.clamp(biome.getDefaultTemperature(), 0.0F, 1.0F);
+				double rain = MathHelper.clamp(biome.getRainfall(), 0.0F, 1.0F);
 				int grasscolor = ColorizerGrass.getGrassColor(temp, rain);
 				int foliagecolor = ColorizerFoliage.getFoliageColor(temp, rain);
 				int watercolor = biome.getWaterColorMultiplier();

@@ -15,6 +15,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import pokeradar.util.Logging;
 import pokeradar.util.Reference;
 import pokeradar.util.Render;
@@ -333,8 +336,9 @@ public class BlockColours
 			// block meta values.
 			try
 			{
-				int renderColour = block.getMapColor(
-						block.getStateFromMeta(Integer.parseInt(meta) & 0xf)).colorValue;
+				World world = FMLCommonHandler.instance().getMinecraftServerInstance().getWorld(0);
+//				int renderColour = Minecraft.getMinecraft().getBlockColors().getColor(block.getBlockState().getBaseState(), world, );
+				int renderColour = block.getBlockState().getBaseState().getMaterial().getMaterialMapColor().colorValue;
 				if (renderColour != 0xffffff)
 				{
 					blockColour = Render.multiplyColours(blockColour, 0xff000000 | renderColour);

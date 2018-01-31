@@ -16,7 +16,7 @@ public final class Reference
 	public static final String MOD_NAME = "PokeRadar";
 	public static final String AUTHOR = "CallMeTheDr";
 	public static final String VERSION = "3.8.0";
-	public static final String ACCEPTABLE_MC_VERSIONS = "[1.10.2]";
+	public static final String ACCEPTABLE_MC_VERSIONS = "[1.10.2, 1.12.2]";
 	public static final String MOD_GUIFACTORY_CLASS = "pokeradar.gui.ModGuiFactoryHandler";
 	public static final String CLIENT_PROXY_CLASS = "pokeradar.forge.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "pokeradar.forge.CommonProxy";

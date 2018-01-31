@@ -137,20 +137,20 @@ public class Mw
 	public void updatePlayer()
 	{
 		// get player pos
-		this.playerX = this.mc.thePlayer.posX;
-		this.playerY = this.mc.thePlayer.posY;
-		this.playerZ = this.mc.thePlayer.posZ;
+		this.playerX = this.mc.player.posX;
+		this.playerY = this.mc.player.posY;
+		this.playerZ = this.mc.player.posZ;
 		this.playerXInt = (int) Math.floor(this.playerX);
 		this.playerYInt = (int) Math.floor(this.playerY);
 		this.playerZInt = (int) Math.floor(this.playerZ);
 
-		if (this.mc.theWorld != null)
+		if (this.mc.world != null)
 		{
-			if (!this.mc.theWorld
+			if (!this.mc.world
 					.getChunkFromBlockCoords(new BlockPos(this.playerX, 0, this.playerZ))
 					.isEmpty())
 			{
-				this.playerBiome = this.mc.theWorld
+				this.playerBiome = this.mc.world
 						.getBiomeForCoordsBody(new BlockPos(this.playerX, 0, this.playerZ))
 						.getBiomeName();
 			}
@@ -159,12 +159,12 @@ public class Mw
 		// rotationYaw of 0 points due north, we want it to point due east
 		// instead
 		// so add pi/2 radians (90 degrees)
-		this.playerHeading = Math.toRadians(this.mc.thePlayer.rotationYaw) + (Math.PI / 2.0D);
-		this.mapRotationDegrees = -this.mc.thePlayer.rotationYaw + 180;
-		this.pkRotationDegrees = -this.mc.thePlayer.rotationYaw - 180;
+		this.playerHeading = Math.toRadians(this.mc.player.rotationYaw) + (Math.PI / 2.0D);
+		this.mapRotationDegrees = -this.mc.player.rotationYaw + 180;
+		this.pkRotationDegrees = -this.mc.player.rotationYaw - 180;
 
 		// set by onWorldLoad
-		this.playerDimension = this.mc.theWorld.provider.getDimensionType().getId();
+		this.playerDimension = this.mc.world.provider.getDimensionType().getId();
 		if (this.miniMap.view.getDimension() != this.playerDimension)
 		{
 			WorldConfig.getInstance().addDimension(this.playerDimension);
@@ -176,11 +176,11 @@ public class Mw
 	{
 		this.markerManager.nextGroup();
 		this.markerManager.update();
-		this.mc.thePlayer.addChatMessage(
+		this.mc.player.sendStatusMessage(
 				new TextComponentTranslation("mw.msg.groupselected", new Object[]
 		{
 				this.markerManager.getVisibleGroupName()
-		}));
+		}), false);
 	}
 
 	// cheap and lazy way to teleport...
@@ -188,7 +188,7 @@ public class Mw
 	{
 		if (Config.teleportEnabled)
 		{
-			this.mc.thePlayer.sendChatMessage(
+			this.mc.player.sendChatMessage(
 					String.format("/%s %d %d %d", Config.teleportCommand, x, y, z));
 		}
 		else
@@ -202,7 +202,7 @@ public class Mw
 		if (Config.teleportEnabled)
 		{
 			// MwUtil.printBoth(String.format("warping to %s", name));
-			this.mc.thePlayer.sendChatMessage(String.format("/warp %s", name));
+			this.mc.player.sendChatMessage(String.format("/warp %s", name));
 		}
 		else
 		{
@@ -344,7 +344,7 @@ public class Mw
 			return;
 		}
 
-		if ((this.mc.theWorld == null) || (this.mc.thePlayer == null))
+		if ((this.mc.world == null) || (this.mc.player == null))
 		{
 			Logging.log("Mw.load: world or player is null, cannot load yet");
 			return;
@@ -422,7 +422,7 @@ public class Mw
 				Config.zoomOutLevels);
 		// overlay manager depends on mapTexture
 		this.miniMap = new MiniMap(this);
-		this.miniMap.view.setDimension(this.mc.thePlayer.dimension);
+		this.miniMap.view.setDimension(this.mc.player.dimension);
 
 		this.chunkManager = new ChunkManager(this);
 
@@ -489,7 +489,7 @@ public class Mw
 	public void onTick()
 	{
 		this.load();
-		if (this.ready && (this.mc.thePlayer != null))
+		if (this.ready && (this.mc.player != null))
 		{
 			this.setTextureSize();
 
@@ -553,7 +553,7 @@ public class Mw
 			}
 			else
 			{
-				Logging.logInfo("missed chunk (%d, %d)", chunk.xPosition, chunk.zPosition);
+				Logging.logInfo("missed chunk (%d, %d)", chunk.getPos().x, chunk.getPos().z);
 			}
 		}
 	}
@@ -668,11 +668,11 @@ public class Mw
 				// toggle marker mode
 				this.markerManager.nextGroup();
 				this.markerManager.update();
-				this.mc.thePlayer.addChatMessage(
+				this.mc.player.sendStatusMessage(
 						new TextComponentTranslation("mw.msg.groupselected", new Object[]
 				{
 						this.markerManager.getVisibleGroupName()
-				}));
+				}), false);
 
 			}
 			else if (kb == MwKeyHandler.keyTeleport)

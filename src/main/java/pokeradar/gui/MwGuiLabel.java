@@ -10,7 +10,7 @@ public class MwGuiLabel
 	int x = 0, y = 0, w = 1, h = 12;
 	static int spacingX = 4;
 	static int spacingY = 2;
-	private FontRenderer fontRendererObj = Minecraft.getMinecraft().fontRendererObj;;
+	private FontRenderer fontRendererObj = Minecraft.getMinecraft().fontRenderer;
 	private Boolean Background;
 	private Boolean AllowFlip;
 	private int parentWidth;
@@ -209,7 +209,7 @@ public class MwGuiLabel
 		{
 			int stringwidth = Utils.getMaxWidth(this.s1, this.s2);
 			this.w = stringwidth < (this.parentWidth - 20) ? stringwidth : this.parentWidth - 20;
-			this.h = this.fontRendererObj.splitStringWidth(this.str1, this.parentWidth > 0 ? this.parentWidth : 10);
+			this.h = this.fontRendererObj.getWordWrappedHeight(this.str1, this.parentWidth > 0 ? this.parentWidth : 10);
 		}
 	}
 }

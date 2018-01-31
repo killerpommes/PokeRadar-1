@@ -162,10 +162,10 @@ public class EventHandler
 	{
 		if (event.getTarget() instanceof EntityPixelmon
 				&& event.getHand() == EnumHand.MAIN_HAND
-				&& event.getItemStack() == null)
+				&& event.getItemStack().isEmpty())
 		{
 			try {
-				EntityPlayerSP player = this.mw.mc.thePlayer;
+				EntityPlayerSP player = this.mw.mc.player;
 				EntityPixelmon entity = (EntityPixelmon) event.getTarget();
 				String name = entity.getName();
 				EnumBossMode bossMode = entity.getBossMode();
@@ -279,18 +279,18 @@ public class EventHandler
 				{
 					owner = entity.getOwner().getName();
 				}
-				player.addChatMessage(new TextComponentString(""));
-				player.addChatMessage(new TextComponentString(Reference.CHAT_BRANDING));
-				player.addChatMessage(new TextComponentString( "Level: " + ChatFormatting.RESET + level.getLevel() + ChatFormatting.GREEN + " " + ChatFormatting.BOLD + name + ChatFormatting.RESET
+				player.sendStatusMessage(new TextComponentString(""), false);
+				player.sendStatusMessage(new TextComponentString(Reference.CHAT_BRANDING), false);
+				player.sendStatusMessage(new TextComponentString( "Level: " + ChatFormatting.RESET + level.getLevel() + ChatFormatting.GREEN + " " + ChatFormatting.BOLD + name + ChatFormatting.RESET
 						+ ((isShiny) ? " (" + ChatFormatting.GREEN + "shiny" + ChatFormatting.RESET + ")" : "")
-						+ ChatFormatting.ITALIC + " " + ChatFormatting.DARK_AQUA + extra));
-				player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Owner: " + ChatFormatting.RESET + owner));
-				//player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Ability: " + ChatFormatting.RESET + entity.getAbility().getName()));
-				//player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Hidden Ability: " + ChatFormatting.RESET + hiddenAbility));
-				player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Growth: " + ChatFormatting.RESET + entity.getGrowth().toString()));
-				player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Nature: " + nature.toString() + ChatFormatting.RESET
-						+ " +" + getNatureShorthand(nature.increasedStat) + " -" + getNatureShorthand(nature.decreasedStat)));
-				/*player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "IVs: "
+						+ ChatFormatting.ITALIC + " " + ChatFormatting.DARK_AQUA + extra), false);
+				player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Owner: " + ChatFormatting.RESET + owner), false);
+				//player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Ability: " + ChatFormatting.RESET + entity.getAbility().getName()));
+				//player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Hidden Ability: " + ChatFormatting.RESET + hiddenAbility));
+				player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Growth: " + ChatFormatting.RESET + entity.getGrowth().toString()), false);
+				player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Nature: " + nature.toString() + ChatFormatting.RESET
+						+ " +" + getNatureShorthand(nature.increasedStat) + " -" + getNatureShorthand(nature.decreasedStat)), false);
+				/*player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "IVs: "
 						+ "HP " + ChatFormatting.RESET + ivStore.HP + ChatFormatting.GREEN + ", "
 						+ "Atk " + ChatFormatting.RESET + ivStore.Attack + ChatFormatting.GREEN + ", "
 						+ "Def " + ChatFormatting.RESET + ivStore.Defence + ChatFormatting.GREEN + ", "
@@ -298,9 +298,9 @@ public class EventHandler
 						+ "SpDef " + ChatFormatting.RESET + ivStore.SpDef + ChatFormatting.GREEN + ", "
 						+ "Speed " + ChatFormatting.RESET + ivStore.Speed
 				));
-				player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Total IVs: " + ivSum
+				player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Total IVs: " + ivSum
 						+ "/186 (" + ChatFormatting.RESET + (int)(((double)ivSum/186)*100) + "%" + ChatFormatting.GREEN + ")"));*/
-				/*player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "EVs: "
+				/*player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "EVs: "
 						+ "HP " + ChatFormatting.RESET + eVsStore.HP + ChatFormatting.GREEN + ", "
 						+ "ATK " + ChatFormatting.RESET + eVsStore.Attack + ChatFormatting.GREEN + ", "
 						+ "DEF " + ChatFormatting.RESET + eVsStore.Defence + ChatFormatting.GREEN + ", "
@@ -308,10 +308,10 @@ public class EventHandler
 						+ "SpDef " + ChatFormatting.RESET + eVsStore.SpecialDefence + ChatFormatting.GREEN + ", "
 						+ "Speed " + ChatFormatting.RESET + eVsStore.Speed
 				));
-				player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Total EVs: " + evSum
+				player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Total EVs: " + evSum
 						+ "/510 (" + ChatFormatting.RESET + (int)(((double)evSum/510)*100) + "%" + ChatFormatting.GREEN + ")"));*/
-				//player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Hidden Power: " + ChatFormatting.RESET + hiddenPower.toString()));
-				//player.addChatMessage(new TextComponentString(""));
+				//player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Hidden Power: " + ChatFormatting.RESET + hiddenPower.toString()));
+				//player.sendStatusMessage(new TextComponentString(""));
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
@@ -326,7 +326,7 @@ public class EventHandler
 		field.setAccessible(true);
 		PixelmonData entity = (PixelmonData) field.get(guiStats);
 
-		EntityPlayerSP player = this.mw.mc.thePlayer;
+		EntityPlayerSP player = this.mw.mc.player;
 		String name = entity.name;
 		EnumBossMode bossMode = entity.bossMode;
 		boolean isShiny = entity.isShiny;
@@ -412,42 +412,42 @@ public class EventHandler
 			}
 		}
 
-		player.addChatMessage(new TextComponentString(""));
-		player.addChatMessage(new TextComponentString(Reference.CHAT_BRANDING));
-		player.addChatMessage(new TextComponentString( ((isEgg) ? ChatFormatting.YELLOW + "EGG" : "Level " + level)
+		player.sendStatusMessage(new TextComponentString(""), false);
+		player.sendStatusMessage(new TextComponentString(Reference.CHAT_BRANDING), false);
+		player.sendStatusMessage(new TextComponentString( ((isEgg) ? ChatFormatting.YELLOW + "EGG" : "Level " + level)
 				+ ChatFormatting.GREEN  + " " + ChatFormatting.BOLD + name + ChatFormatting.RESET
 				+ ((isShiny) ? " (" + ChatFormatting.GREEN + "shiny" + ChatFormatting.RESET + ")" : "")
 				+ ChatFormatting.ITALIC + " " + ChatFormatting.DARK_AQUA + extra
-		));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Gender: " + ChatFormatting.RESET + gender.toString()
+		), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Gender: " + ChatFormatting.RESET + gender.toString()
 				+ " " + ChatFormatting.GREEN + "Growth: " + ChatFormatting.RESET + entity.growth.toString()
-		));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Nature: " + nature.toString() + ChatFormatting.RESET
+		), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Nature: " + nature.toString() + ChatFormatting.RESET
 				+ " +" + getNatureShorthand(nature.increasedStat) + " -" + getNatureShorthand(nature.decreasedStat)
-		));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Ability: " + ChatFormatting.RESET + entity.ability));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Hidden Power: " + ChatFormatting.RESET + hiddenPower.toString()));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "IVs: "
+		), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Ability: " + ChatFormatting.RESET + entity.ability), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Hidden Power: " + ChatFormatting.RESET + hiddenPower.toString()), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "IVs: "
 				+ "HP " + ChatFormatting.RESET + IVs[0] + ChatFormatting.GREEN + ", "
 				+ "Atk " + ChatFormatting.RESET + IVs[1] + ChatFormatting.GREEN + ", "
 				+ "Def " + ChatFormatting.RESET + IVs[2] + ChatFormatting.GREEN + ", "
 				+ "SpAtk " + ChatFormatting.RESET + IVs[3] + ChatFormatting.GREEN + ", "
 				+ "SpDef " + ChatFormatting.RESET + IVs[4] + ChatFormatting.GREEN + ", "
 				+ "Speed " + ChatFormatting.RESET + IVs[5]
-		));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Total IVs: " + ivSum
+		), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Total IVs: " + ivSum
 				+ "/186 (" + ChatFormatting.RESET + (int)(((double)ivSum/186)*100) + "%" + ChatFormatting.GREEN + ")"
-		));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "EVs: "
+		), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "EVs: "
 				+ "HP " + ChatFormatting.RESET + EVs[0] + ChatFormatting.GREEN + ", "
 				+ "ATK " + ChatFormatting.RESET + EVs[1] + ChatFormatting.GREEN + ", "
 				+ "DEF " + ChatFormatting.RESET + EVs[2] + ChatFormatting.GREEN + ", "
 				+ "SpAtk " + ChatFormatting.RESET + EVs[3] + ChatFormatting.GREEN + ", "
 				+ "SpDef " + ChatFormatting.RESET + EVs[4] + ChatFormatting.GREEN + ", "
 				+ "Speed " + ChatFormatting.RESET + EVs[5]
-		));
-		player.addChatMessage(new TextComponentString(ChatFormatting.GREEN + "Total EVs: " + evSum
-				+ "/510 (" + ChatFormatting.RESET + (int)(((double)evSum/510)*100) + "%" + ChatFormatting.GREEN + ")"));
+		), false);
+		player.sendStatusMessage(new TextComponentString(ChatFormatting.GREEN + "Total EVs: " + evSum
+				+ "/510 (" + ChatFormatting.RESET + (int)(((double)evSum/510)*100) + "%" + ChatFormatting.GREEN + ")"), false);
 		field.setAccessible(false);
 	}
 
@@ -556,7 +556,7 @@ public class EventHandler
 			}
 			catch (IllegalAccessException e)
 			{
-
+				Pokeradar.logger.error(e.getMessage());
 			}
 		}
 	}
