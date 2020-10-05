@@ -63,6 +63,7 @@ public class EntityFinder
                             EVsStore eVsStore = null;
                             IVStore ivStore = null;
                             EnumNature nature = entity.getNature();
+                            int hiddenAbility = entity.getPokemonData().getAbilitySlot();
                             int ivSum = 0;
                             if (baseStats != null) {
                                 eVsStore = entity.baseStats.evGain;
@@ -84,7 +85,7 @@ public class EntityFinder
                             String natureStr = nature.getLocalizedName();
 
 
-                            if (isShiny) {
+                            if (isShiny || hiddenAbility == 2) {
                                 type = EntityType.SHINY;
                                 //desc = desc + " (shiny)";
                             }
